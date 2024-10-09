@@ -1,0 +1,35 @@
+<nav style="z-index: 1;" class="navbar navbar-expand-lg bg-body-tertiary position-fixed top-0 w-100">
+    <div class="container-fluid">
+      <a class="navbar-brand fw-bolder fs-3" routerLink=""> <i class="fa-solid fa-crown fa-2xl" style="color: #FFD43B;"></i> Style Guru</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li *ngIf="dataFromParent" class="nav-item">
+            <input (keyup)="getSearchKey($event)" style="width: 350px;" class="form-control me-2" type="search" placeholder="Search Products Name" aria-label="Search">
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-secondary" routerLink="/wishlist">
+              <i class="fa-solid fa-heart text-danger me-1"></i>Wishlist <span class="badge text-bg-secondary">{{wishlistCount}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-outline-success ms-2" routerLink="/cart">
+              <i class="fa-solid fa-cart-plus text-success me-1"></i>Cart <span class="badge text-bg-secondary">{{cartCount}}</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a *ngIf="!username" class="btn ms-2" routerLink="/login">
+              <i class="fa-solid fa-user text-warning me-1"></i>Login
+            </a>
+            <a *ngIf="username" style="text-decoration: none;" class="btn ms-2 d-flex align-items-center">
+              <span class="fw-bolder me-2">Welcome {{username}},</span>
+              <!-- logout -->
+              <button (click)="logout()" class="btn btn-primary"><i class="fa-solid fa-right-from-bracket"></i></button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
